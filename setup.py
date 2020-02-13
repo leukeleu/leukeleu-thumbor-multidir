@@ -2,15 +2,17 @@
 
 from setuptools import setup, find_packages
 
+
+
+def readme():
+    with open('README.md') as f:
+        return f.read()
+
+
 setup(
     name='thumbor_multidir',
     version='0.2.1',
     description="Thumbor file loader for multiple paths",
-    long_description="""
-Allows Thumbor to load files from multiple paths.
-
-Checks a list of paths for exsitance of file prior to loading it.
-""",
     keywords='imaging face detection feature thumbor file loader',
     author='Benn Eichhorn',
     author_email='beichhor@gmail.com',
@@ -34,4 +36,5 @@ Checks a list of paths for exsitance of file prior to loading it.
     ],
     extras_require={
     },
+    long_description=readme(),
 )
