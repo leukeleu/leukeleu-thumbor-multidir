@@ -12,6 +12,7 @@ from thumbor.utils import logger
 
 @return_future
 def load(context, path, callback):
+    result = LoaderResult()
 
     for idx, next_dir in enumerate(context.config.TC_MULTIDIR_PATHS):
 
@@ -21,10 +22,10 @@ def load(context, path, callback):
         inside_root_path = file_path.startswith(abspath(next_dir))
 
         if inside_root_path and exists(file_path):
+            
             with open(file_path, 'rb') as f:
                 stats = fstat(f.fileno())
 
-                result = LoaderResult()
                 result.successful = True
                 result.buffer = f.read()
 

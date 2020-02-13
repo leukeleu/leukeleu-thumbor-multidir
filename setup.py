@@ -11,7 +11,7 @@ def readme():
 
 setup(
     name='thumbor_multidir',
-    version='0.2.3',
+    version='0.2.4',
     description="Thumbor file loader for multiple paths",
     keywords='imaging face detection feature thumbor file loader',
     author='Benn Eichhorn',
