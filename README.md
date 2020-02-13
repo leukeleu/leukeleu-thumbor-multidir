@@ -19,7 +19,7 @@ Using it is simple, just change your configuration in thumbor.conf (or enviromen
 
 To use tc_multidir for loading original images, change your thumbor.conf or environment variables to read:
 
-    LOADER = 'thumbor_cassandra.loader'
+    LOADER = 'tc_multidir.loader'
 
 Running Thumbor
 ---------------
