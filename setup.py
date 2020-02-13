@@ -8,10 +8,12 @@ def readme():
     with open('README.md') as f:
         return f.read()
 
+__version__ = None
+exec(open('tc_multidir/_version.py').read())
 
 setup(
     name='thumbor_multidir',
-    version='0.2.4',
+    version=__version__,
     description="Thumbor file loader for multiple paths",
     keywords='imaging face detection feature thumbor file loader',
     author='Benn Eichhorn',
