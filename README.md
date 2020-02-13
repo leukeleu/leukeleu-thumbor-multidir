@@ -24,5 +24,7 @@ To use tc_multidir for loading original images, change your thumbor.conf or envi
 Running Thumbor
 ---------------
 
+Note: If using environment variables run Thumbor with the `--use-environment` flag or other method to load it into the thumbor.conf template.
+
 See [Thumbor repo](https://github.com/thumbor/thumbor)
 or use the Docker container maintaned by [MinimalCompact](https://github.com/MinimalCompact/thumbor/tree/master/thumbor) as a base image... see [/docker/Dockerfile](https://github.com/benneic/thumbor_multidir/tree/master/docker) for an example.
