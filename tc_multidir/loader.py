@@ -4,7 +4,8 @@
 from os import fstat
 from datetime import datetime
 from os.path import join, exists, abspath
-from urllib.parse import unquote
+
+from six.moves.urllib.parse import unquote
 
 from tornado.concurrent import return_future
 
