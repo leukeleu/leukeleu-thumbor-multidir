@@ -4,6 +4,7 @@
 from os import fstat
 from datetime import datetime
 from os.path import join, exists, abspath
+from urllib.parse import unquote
 
 from tornado.concurrent import return_future
 
@@ -21,19 +22,27 @@ def load(context, path, callback):
 
         inside_root_path = file_path.startswith(abspath(next_dir))
 
-        if inside_root_path and exists(file_path):
+        if inside_root_path:
             
-            with open(file_path, 'rb') as f:
-                stats = fstat(f.fileno())
+            # keep backwards compatibility, try the actual path first
+            # if not found, unquote it and try again
+            found = exists(file_path)
+            if not found:
+                file_path = unquote(file_path)
+                found = exists(file_path)
 
-                result.successful = True
-                result.buffer = f.read()
+            if found:
+                with open(file_path, 'rb') as f:
+                    stats = fstat(f.fileno())
 
-                result.metadata.update(
-                    size=stats.st_size,
-                    updated_at=datetime.utcfromtimestamp(stats.st_mtime))
-            callback(result)
-            return
+                    result.successful = True
+                    result.buffer = f.read()
+
+                    result.metadata.update(
+                        size=stats.st_size,
+                        updated_at=datetime.utcfromtimestamp(stats.st_mtime))
+                callback(result)
+                return
 
         logger.debug('TC_MULTIDIR: File {0} not found in {1}'.format(path, next_dir))
         # else loop and try next directory
