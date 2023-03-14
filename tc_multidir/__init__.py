@@ -1,8 +1,8 @@
 import os
 
-from ._version import __version__
-
 from thumbor.config import Config
+
+from ._version import __version__
 
 Config.define(
     "TC_MULTIDIR_PATHS",

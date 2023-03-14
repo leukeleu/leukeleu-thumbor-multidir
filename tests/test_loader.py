@@ -1,12 +1,11 @@
-from os.path import abspath, join, dirname
+from os.path import abspath, dirname, join
 
 from preggy import expect
-from tornado.testing import gen_test
-from tornado.testing import AsyncTestCase as TestCase
-
-from thumbor.context import Context
 from thumbor.config import Config
+from thumbor.context import Context
 from thumbor.loaders import LoaderResult
+from tornado.testing import AsyncTestCase as TestCase
+from tornado.testing import gen_test
 
 from tc_multidir.loader import load
 
