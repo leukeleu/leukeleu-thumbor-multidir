@@ -7,13 +7,10 @@ from os.path import join, exists, abspath
 
 from six.moves.urllib.parse import unquote
 
-from tornado.concurrent import return_future
-
 from thumbor.loaders import LoaderResult
 from thumbor.utils import logger
 
-@return_future
-def load(context, path, callback):
+async def load(context, path):
     result = LoaderResult()
 
     for idx, next_dir in enumerate(context.config.TC_MULTIDIR_PATHS):
@@ -42,8 +39,7 @@ def load(context, path, callback):
                     result.metadata.update(
                         size=stats.st_size,
                         updated_at=datetime.utcfromtimestamp(stats.st_mtime))
-                callback(result)
-                return
+                return result
 
         logger.debug('TC_MULTIDIR: File {0} not found in {1}'.format(path, next_dir))
         # else loop and try next directory
@@ -54,4 +50,4 @@ def load(context, path, callback):
     # no file found
     result.error = LoaderResult.ERROR_NOT_FOUND
     result.successful = False
-    callback(result)
+    return result
