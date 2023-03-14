@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
 from thumbor.config import Config
 from thumbor.context import Context
 from thumbor.loaders import LoaderResult, file_loader

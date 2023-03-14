@@ -1,4 +1,3 @@
- # -*- coding: utf-8 -*-
 import os
 
 from ._version import __version__
