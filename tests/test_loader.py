@@ -6,8 +6,9 @@ from tornado.testing import AsyncTestCase as TestCase
 
 from thumbor.context import Context
 from thumbor.config import Config
-from thumbor.loaders.file_loader import load
 from thumbor.loaders import LoaderResult
+
+from tc_multidir.loader import load
 
 STORAGE_PATH = abspath(join(dirname(__file__), '../fixtures/images/'))
 
@@ -15,7 +16,7 @@ STORAGE_PATH = abspath(join(dirname(__file__), '../fixtures/images/'))
 class FileLoaderTestCase(TestCase):
     def setUp(self):
         super().setUp()
-        config = Config(FILE_LOADER_ROOT_PATH=STORAGE_PATH)
+        config = Config(TC_MULTIDIR_PATHS=[STORAGE_PATH])
         self.ctx = Context(config=config)
 
     async def load_file(self, file_name):
