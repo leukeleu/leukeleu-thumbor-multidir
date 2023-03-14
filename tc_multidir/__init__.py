@@ -1,5 +1,3 @@
-import os
-
 from thumbor.config import Config
 
 from ._version import __version__
