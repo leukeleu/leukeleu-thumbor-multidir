@@ -4,20 +4,23 @@ from thumbor.context import Context
 from thumbor.loaders import LoaderResult, file_loader
 from thumbor.utils import logger
 
+
 async def load(context, path):
     result = LoaderResult()
 
     for idx, next_dir in enumerate(context.config.TC_MULTIDIR_PATHS):
-        result = await file_loader.load(Context(config=Config(FILE_LOADER_ROOT_PATH=next_dir)), path)
+        result = await file_loader.load(
+            Context(config=Config(FILE_LOADER_ROOT_PATH=next_dir)), path
+        )
 
         if result.successful:
             return result
 
-        logger.debug(f'TC_MULTIDIR: File {path} not found in {next_dir}')
+        logger.debug(f"TC_MULTIDIR: File {path} not found in {next_dir}")
         # else loop and try next directory
-    
+
     if not context.config.TC_MULTIDIR_PATHS:
-        logger.error('TC_MULTIDIR: No paths set in configuration TC_MULTIDIR_PATHS')
+        logger.error("TC_MULTIDIR: No paths set in configuration TC_MULTIDIR_PATHS")
 
     # no file found
     result.error = LoaderResult.ERROR_NOT_FOUND
