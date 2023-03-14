@@ -36,7 +36,7 @@ setup(
     install_requires=[
         'python-dateutil',
         'six',
-        'thumbor>=6.0.0,<7',
+        'thumbor>=7,<8',
     ],
     extras_require={
         "tests": [
@@ -46,7 +46,6 @@ setup(
             "colorama",
             "numpy",
             "flake8",
-            "thumbor<7.0.0",
             "preggy>=1.3.0",
             "yanc>=0.3.3",
         ]
