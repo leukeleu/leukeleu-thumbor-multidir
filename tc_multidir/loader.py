@@ -13,7 +13,7 @@ async def load(context, path):
         if result.successful:
             return result
 
-        logger.debug('TC_MULTIDIR: File {0} not found in {1}'.format(path, next_dir))
+        logger.debug(f'TC_MULTIDIR: File {path} not found in {next_dir}')
         # else loop and try next directory
     
     if not context.config.TC_MULTIDIR_PATHS:
