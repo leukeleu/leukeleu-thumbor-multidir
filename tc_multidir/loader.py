@@ -8,7 +8,7 @@ from thumbor.utils import logger
 async def load(context, path):
     result = LoaderResult()
 
-    for idx, next_dir in enumerate(context.config.TC_MULTIDIR_PATHS):
+    for next_dir in context.config.TC_MULTIDIR_PATHS:
         result = await file_loader.load(
             Context(config=Config(FILE_LOADER_ROOT_PATH=next_dir)), path
         )
