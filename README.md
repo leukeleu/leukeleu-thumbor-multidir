@@ -1,5 +1,5 @@
-thumbor_multidir
-================
+leukeleu-thumbor-multidir
+=========================
 
 Thumbor file loader that checks multiple paths
 
