@@ -11,7 +11,7 @@ It enables on-demand crop, resizing and flipping of images.
 
 By default, the Thumbor file loader only loads images from a single path. 
 Using this loader, multiple paths can be specified. The first path that contains 
-the requrest image is then used.
+the requested image is then used.
 
 Usage
 -----
